@@ -58,3 +58,39 @@ public:
     next = in_next;
   }
 };
+
+class List{
+private:
+  LLNode * head;
+  int size;
+
+public:
+  List(){}
+
+  void add(Employee * record){
+    LLnode * temp = new LLNode(record);
+    head.setNext(temp);
+    head = temp;
+    size++;
+  }
+
+  void remove(Employee * record){
+    if(head.get_record() == record){
+      head = head.get_next();
+      size--;
+      return;
+    }
+    LLNode * prev = head;
+    LLNode * curr = head.get_next();
+    while(curr != null){
+      if(curr.get_record() == record){
+        prev.set_next(curr.get_next());
+        size--;
+        return;
+      }
+      prev = prev.get_next();
+      curr = curr.get_next();
+    }
+    std::cout<<"Employee not in list"<<std::endl;
+  }
+}
